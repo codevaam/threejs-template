@@ -48,6 +48,17 @@ light1.position.set(-4, -3, 3);
 var gridXZ = new THREE.GridHelper(100, 10);
 scene.add(gridXZ);
 
+// resize canvas
+window.addEventListener("resize", () => {
+    size.width = window.innerWidth;
+    size.height = window.innerHeight;
+
+    camera.aspect = size.width/size.height;
+
+    renderer.setSize(size.width, size.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+})
+
 const animate = () => {
     controls.update();
     window.requestAnimationFrame(animate);
